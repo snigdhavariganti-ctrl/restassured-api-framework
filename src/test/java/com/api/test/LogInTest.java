@@ -23,7 +23,7 @@ public class LogInTest {
 	
     Assert.assertTrue(AuthContext.getToken()!=null);
       
-
+System.out.println(AuthContext.getToken());
 	
 	}
 	

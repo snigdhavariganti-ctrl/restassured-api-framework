@@ -14,7 +14,7 @@ public class LogInAPITest {
 		RestAssured.baseURI = "http://64.227.160.186:8080";		
 	RequestSpecification x =	RestAssured.given();
 	
-	RequestSpecification y = x.header("content-tyep","json");
+	RequestSpecification y = x.header("content-type","json");
 	
 	RequestSpecification z=  y.body("{\"username\": \"snigdha.variganti@gmail.com\",\"password\": \"Variganti@13\"} ");
 	

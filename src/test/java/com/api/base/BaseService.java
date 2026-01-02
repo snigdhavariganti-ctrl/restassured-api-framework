@@ -2,6 +2,8 @@ package com.api.base;
 
 import static io.restassured.RestAssured.*;
 
+import java.util.Map;
+
 import com.api.helpers.AuthContext;
 
 import io.restassured.http.ContentType;
@@ -48,6 +50,16 @@ public class BaseService {
 		
 	}
 	
+protected Response getWithPathParams(String endpoint,Map<String,Object> pathParams) {
+		
+		return request()
+				.log().uri()
+				.log().body()
+				.log().headers()
+				.pathParams(pathParams)
+			    .get(endpoint);
+		
+	}
 	protected Response putRequest(Object payload, String endpoint) {
 		return request()
 				.log().uri().
@@ -56,7 +68,38 @@ public class BaseService {
 	}
 	
 	
+protected Response getWithQueryParams(String endpoint,Map<String, Object> queryparams) {
+		
+		return request()
+				.log().uri()
+				.log().body()
+				.log().headers()
+				.queryParams(queryparams)
+			    .get(endpoint);
+		
+	}
+
+protected Response putRequestWithParams(String endpoint,Map<String,String>pathparams,Map<String,String>queryparams) {
 	
+	return request()
+			.pathParams(pathparams)
+			.queryParams(queryparams)
+			.log().uri()
+
+			.put(endpoint);
+			
+}
+
+protected Response PostRequestWithParams(String endpoint,Object payload, Map<String,Object>queryparams) {
+	return request()
+			.queryParams(queryparams)
+			.body(payload)
+			.log().uri()
+			.log().body()
+			.post(endpoint);
+
+
+}
 	
 
 }
